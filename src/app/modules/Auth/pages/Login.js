@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from "react-intl";
+
 import * as auth from "../_redux/authRedux";
 import { login } from "../_redux/authCrud";
 
@@ -23,26 +23,18 @@ const initialValues = {
 };
 
 function Login(props) {
-  const { intl } = props;
+
   const [loading, setLoading] = useState(false);
   const LoginSchema = Yup.object().shape({
     email: Yup.string()
       .email("Wrong email format")
       .min(3, "Minimum 3 symbols")
       .max(50, "Maximum 50 symbols")
-      .required(
-        intl.formatMessage({
-          id: "AUTH.VALIDATION.REQUIRED_FIELD",
-        })
-      ),
+,
     password: Yup.string()
       .min(3, "Minimum 3 symbols")
       .max(50, "Maximum 50 symbols")
-      .required(
-        intl.formatMessage({
-          id: "AUTH.VALIDATION.REQUIRED_FIELD",
-        })
-      ),
+,
   });
 
   const enableLoading = () => {
@@ -79,11 +71,7 @@ function Login(props) {
           .catch(() => {
             disableLoading();
             setSubmitting(false);
-            setStatus(
-              intl.formatMessage({
-                id: "AUTH.VALIDATION.INVALID_LOGIN",
-              })
-            );
+
           });
       }, 1000);
     },
@@ -93,9 +81,7 @@ function Login(props) {
     <div className="login-form login-signin" id="kt_login_signin_form">
       {/* begin::Head */}
       <div className="text-center mb-10 mb-lg-20">
-        <h3 className="font-size-h1">
-          <FormattedMessage id="AUTH.LOGIN.TITLE" />
-        </h3>
+      <h3>Create Account</h3>
         <p className="text-muted font-weight-bold">
           Enter your username and password
         </p>
@@ -158,7 +144,7 @@ function Login(props) {
             className="text-dark-50 text-hover-primary my-3 mr-2"
             id="kt_login_forgot"
           >
-            <FormattedMessage id="AUTH.GENERAL.FORGOT_BUTTON" />
+            Forgot Password
           </Link>
           <button
             id="kt_login_signin_submit"
@@ -176,4 +162,4 @@ function Login(props) {
   );
 }
 
-export default injectIntl(connect(null, auth.actions)(Login));
+export default connect(null, auth.actions)(Login);

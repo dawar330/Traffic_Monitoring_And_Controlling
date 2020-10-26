@@ -3,8 +3,11 @@ import React from "react";
 import SVG from "react-inlinesvg";
 import {toAbsoluteUrl} from "../../../_helpers";
 import { CircularStatic } from "../Forms/Circle";
+import {Button} from "react-bootstrap";
+import {AssignDutiesModal} from "./AssignDutiesModal";
 
 export function WardenResponsibilityWidget({ className }) {
+    const [modalShow, setModalShow] = React.useState(false);
   return (
       <div className={`card card-custom ${className}`}>
         {/* Head */}
@@ -14,8 +17,13 @@ export function WardenResponsibilityWidget({ className }) {
             <span className="text-muted mt-3 font-weight-bold font-size-sm">22 Wardens are available</span>
           </h3>
           <div className="card-toolbar">
-            <a href="#" className="btn btn-danger font-weight-bolder font-size-sm">Assign Duties</a>
-          </div>
+          <Button variant="btn btn-danger font-weight-bolder font-size-sm" onClick={() => setModalShow(true)}>
+        Assign Duties
+      </Button>
+      <AssignDutiesModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />  </div>
         </div>
         {/* Body */}
         <div className="card-body pt-0 pb-3">
@@ -51,18 +59,18 @@ export function WardenResponsibilityWidget({ className }) {
                   </td>
                   <td>
                       <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                        17
+                        10
                       </span>
                     <span className="text-muted font-weight-bold">
-                        Grade
+                        00 am
                       </span>
                   </td>
                   <td>
                       <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                        Traffic Officer
+                        05
                       </span>
                     <span className="text-muted font-weight-bold">
-                        Designation
+                        00 pm
                       </span>
                   </td>
                   <td>
@@ -100,18 +108,18 @@ export function WardenResponsibilityWidget({ className }) {
                   </td>
                   <td>
                     <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                      18
+                      05
                     </span>
                     <span className="text-muted font-weight-bold">
-                      Grade
+                      00 pm
                     </span>
                   </td>
                   <td>
                     <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                      District Officer
+                      11
                     </span>
                     <span className="text-muted font-weight-bold">
-                      Designation
+                      00 pm
                     </span>
                   </td>
                   <td>
@@ -149,18 +157,18 @@ export function WardenResponsibilityWidget({ className }) {
                   </td>
                   <td>
                     <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                      G10
+                      01
                     </span>
                     <span className="text-muted font-weight-bold">
-                     Grade
+                     00 pm
                     </span>
                   </td>
                   <td>
                     <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                     Area Manager
+                     07
                     </span>
                     <span className="text-muted font-weight-bold">
-                      Designation
+                      00 am
                     </span>
                   </td>
                   <td>
@@ -198,18 +206,18 @@ export function WardenResponsibilityWidget({ className }) {
                   </td>
                   <td className="text-left pr-0">
                     <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                      F6
+                      04
                     </span>
                     <span className="text-muted font-weight-bold">
-                      Grade
+                      00 pm
                     </span>
                   </td>
                   <td>
                     <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                      Area Manager
+                      12
                     </span>
                     <span className="text-muted font-weight-bold">
-                      Designation
+                      00 am
                     </span>
                   </td>
                   <td>

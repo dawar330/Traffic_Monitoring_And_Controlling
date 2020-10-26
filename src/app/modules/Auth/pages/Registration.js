@@ -17,48 +17,28 @@ const initialValues = {
 };
 
 function Registration(props) {
-  const { intl } = props;
+
   const [loading, setLoading] = useState(false);
   const RegistrationSchema = Yup.object().shape({
     fullname: Yup.string()
       .min(3, "Minimum 3 symbols")
       .max(50, "Maximum 50 symbols")
-      .required(
-        intl.formatMessage({
-          id: "AUTH.VALIDATION.REQUIRED_FIELD",
-        })
-      ),
+,
     email: Yup.string()
       .email("Wrong email format")
       .min(3, "Minimum 3 symbols")
       .max(50, "Maximum 50 symbols")
-      .required(
-        intl.formatMessage({
-          id: "AUTH.VALIDATION.REQUIRED_FIELD",
-        })
-      ),
+,
     username: Yup.string()
       .min(3, "Minimum 3 symbols")
       .max(50, "Maximum 50 symbols")
-      .required(
-        intl.formatMessage({
-          id: "AUTH.VALIDATION.REQUIRED_FIELD",
-        })
-      ),
+,
     password: Yup.string()
       .min(3, "Minimum 3 symbols")
       .max(50, "Maximum 50 symbols")
-      .required(
-        intl.formatMessage({
-          id: "AUTH.VALIDATION.REQUIRED_FIELD",
-        })
-      ),
+,
     changepassword: Yup.string()
-      .required(
-        intl.formatMessage({
-          id: "AUTH.VALIDATION.REQUIRED_FIELD",
-        })
-      )
+
       .when("password", {
         is: (val) => (val && val.length > 0 ? true : false),
         then: Yup.string().oneOf(
@@ -103,11 +83,7 @@ function Registration(props) {
         })
         .catch(() => {
           setSubmitting(false);
-          setStatus(
-            intl.formatMessage({
-              id: "AUTH.VALIDATION.INVALID_LOGIN",
-            })
-          );
+
           disableLoading();
         });
     },
@@ -116,9 +92,7 @@ function Registration(props) {
   return (
     <div className="login-form login-signin" style={{ display: "block" }}>
       <div className="text-center mb-10 mb-lg-20">
-        <h3 className="font-size-h1">
-          <FormattedMessage id="AUTH.REGISTER.TITLE" />
-        </h3>
+
         <p className="text-muted font-weight-bold">
           Enter your details to create your account
         </p>
@@ -279,4 +253,4 @@ function Registration(props) {
   );
 }
 
-export default injectIntl(connect(null, auth.actions)(Registration));
+export default connect(null, auth.actions)(Registration);

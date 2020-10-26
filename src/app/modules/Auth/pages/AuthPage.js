@@ -39,10 +39,10 @@ export function AuthPage() {
                 {/* start:: Aside content */}
                 <div className="flex-column-fluid d-flex flex-column justify-content-center">
                   <h3 className="font-size-h1 mb-5 text-white">
-                    Welcome to City Traffic Anaylsis!
+                    Welcome to City Traffic Analysis!
                   </h3>
                   <p className="font-weight-lighter text-white opacity-80">
-                    A Web Based Portal to visual and optimize the Smooth flow of Islamabads Traffic
+                    The ultimate tool designed for ITP. One Click away from Realtime Data
                   </p>
                 </div>
                 {/* end:: Aside content */}
@@ -52,17 +52,7 @@ export function AuthPage() {
                   <div className="opacity-70 font-weight-bold	text-white">
                     &copy; 2020 City Traffic Analysis
                   </div>
-                  <div className="d-flex">
-                    <Link to="#" className="text-white">
-                      Privacy
-                    </Link>
-                    <Link to="#" className="text-white ml-10">
-                      Legal
-                    </Link>
-                    <Link to="#" className="text-white ml-10">
-                      Contact
-                    </Link>
-                  </div>
+       
                 </div>
                 {/* end:: Aside footer for desktop */}
               </div>
@@ -98,25 +88,9 @@ export function AuthPage() {
               <div
                   className="d-flex d-lg-none flex-column-auto flex-column flex-sm-row justify-content-between align-items-center mt-5 p-5">
                 <div className="text-dark-50 font-weight-bold order-2 order-sm-1 my-2">
-                  &copy; 2020 City Trafiic Analysis
+                  &copy; 2020 City Traffic Analysis
                 </div>
-                <div className="d-flex order-1 order-sm-2 my-2">
-                  <Link to="#" className="text-dark-75 text-hover-primary">
-                    Privacy
-                  </Link>
-                  <Link
-                      to="#"
-                      className="text-dark-75 text-hover-primary ml-4"
-                  >
-                    Legal
-                  </Link>
-                  <Link
-                      to="#"
-                      className="text-dark-75 text-hover-primary ml-4"
-                  >
-                    Contact
-                  </Link>
-                </div>
+
               </div>
               {/* end::Mobile footer */}
             </div>

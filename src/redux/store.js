@@ -1,25 +1,24 @@
-import {configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
-import createSagaMiddleware from "redux-saga";
-import {reduxBatch} from "@manaflair/redux-batch";
+
+
 import {persistStore} from "redux-persist";
-import {rootReducer, rootSaga} from "./rootReducer";
+import {rootReducer} from "./rootReducer";
+import thunk from 'redux-thunk';
+import {reduxFirestore,getFirestore} from 'redux-firestore';
+import {reactReduxFirebase,getFirebase} from 'react-redux-firebase';
+import fbConfig from '../config/fbConfig';
+import {createStore, applyMiddleware, compose} from 'redux';
 
-const sagaMiddleware = createSagaMiddleware();
-const middleware = [
-  ...getDefaultMiddleware({
-    immutableCheck: false,
-    serializableCheck: false,
-    thunk: true
-  }),
-  sagaMiddleware
-];
 
-const store = configureStore({
-  reducer: rootReducer,
-  middleware,
-  devTools: process.env.NODE_ENV !== "production",
-  enhancers: [reduxBatch]
-});
+
+const store = createStore(
+  rootReducer,
+  compose(
+    applyMiddleware(thunk.withExtraArgument({ getFirebase , getFirestore })),
+    reduxFirestore(fbConfig),
+    reactReduxFirebase(fbConfig)
+  
+  )
+);
 
 /**
  * @see https://github.com/rt2zz/redux-persist#persiststorestore-config-callback
@@ -27,6 +26,6 @@ const store = configureStore({
  */
 export const persistor = persistStore(store);
 
-sagaMiddleware.run(rootSaga);
+
 
 export default store;

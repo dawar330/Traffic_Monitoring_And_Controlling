@@ -65,13 +65,13 @@ export function AdvanceTablesWidget2({ className }) {
         <div className="table-responsive">
           <table className="table table-borderless table-vertical-center">
             <thead>
-              <tr>
-                <th className="p-0" style={{ width: "50px" }} />
+              <tr className="text-left text-uppercase">
+                <th className="p-0" style={{ width: "50px" }}>Suggestions</th>
                 <th className="p-0" style={{ minWidth: "200px" }} />
                 <th className="p-0" style={{ minWidth: "100px" }} />
-                <th className="p-0" style={{ minWidth: "125px" }} />
+                <th className="p-0" style={{ minWidth: "125px" }}/>
                 <th className="p-0" style={{ minWidth: "110px" }} />
-                <th className="p-0" style={{ minWidth: "150px" }} />
+                <th className="p-0" style={{ minWidth: "150px" }}>Priority</th> 
               </tr>
             </thead>
             <tbody>
@@ -91,32 +91,32 @@ export function AdvanceTablesWidget2({ className }) {
                     href="#"
                     className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg"
                   >
-                    Sant Outstanding
+                    Lane Id 32312 is increase delay in traffic increase signal timer by 3s.
                   </a>
                   <div>
-                    <span className="font-weight-bolder">Email:</span>{" "}
+                    <span className="font-weight-bolder"></span>{" "}
                     <a
                       className="text-muted font-weight-bold text-hover-primary"
                       href="#"
                     >
-                      bprow@bnc.cc
+                     
                     </a>
                   </div>
                 </td>
                 <td className="text-right">
                   <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                    $2,000,000
+                   
                   </span>
-                  <span className="text-muted font-weight-bold">Paid</span>
+
                 </td>
                 <td className="text-right">
                   <span className="text-muted font-weight-500">
-                    ReactJs, HTML
+                   
                   </span>
                 </td>
                 <td className="text-right">
                   <span className="label label-lg label-light-primary label-inline">
-                    Approved
+                    Low
                   </span>
                 </td>
                 <td className="text-right pr-0">
@@ -148,209 +148,36 @@ export function AdvanceTablesWidget2({ className }) {
                     href="#"
                     className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg"
                   >
-                    Application Development
+                    Increase no of lanes of Edge id 34321.
                   </a>
                   <div>
-                    <span className="font-weight-bolder">Email:</span>{" "}
+                   
                     <a
                       className="text-muted font-weight-bold text-hover-primary"
                       href="#"
                     >
-                      app@dev.com
+                      
                     </a>
                   </div>
                 </td>
                 <td className="text-right">
                   <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                    $4,600,000
-                  </span>
-                  <span className="text-muted font-weight-bold">Paid</span>
-                </td>
-                <td className="text-right">
-                  <span className="text-muted font-weight-500">
-                    Python, MySQL
-                  </span>
-                </td>
-                <td className="text-right">
-                  <span className="label label-lg label-light-warning label-inline">
-                    In Progress
-                  </span>
-                </td>
-                <td className="text-right pr-0">
-                  
-                  <a href="#" className="btn btn-icon btn-light btn-sm">
-                    <span className="svg-icon svg-icon-md svg-icon-primary">
-                      <SVG
-                        src={toAbsoluteUrl(
-                          "/media/svg/icons/General/Trash.svg"
-                        )}
-                      ></SVG>
-                    </span>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td className="pl-0 py-4">
-                  <div className="symbol symbol-50 symbol-light">
-                    <span className="symbol-label">
-                      <SVG
-                        className="h-50 align-self-center"
-                        src={toAbsoluteUrl("/media/svg/misc/003-puzzle.svg")}
-                      ></SVG>
-                    </span>
-                  </div>
-                </td>
-                <td className="pl-0">
-                  <a
-                    href="#"
-                    className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg"
-                  >
-                    Payrol Application
-                  </a>
-                  <div>
-                    <span className="font-weight-bolder">Email:</span>{" "}
-                    <a
-                      className="text-muted font-weight-bold text-hover-primary"
-                      href="#"
-                    >
-                      company@dev.com
-                    </a>
-                  </div>
-                </td>
-                <td className="text-right">
-                  <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                    $560,000
-                  </span>
-                  <span className="text-muted font-weight-bold">Paid</span>
-                </td>
-                <td className="text-right">
-                  <span className="text-muted font-weight-500">
-                    Laravel, Metronic
-                  </span>
-                </td>
-                <td className="text-right">
-                  <span className="label label-lg label-light-success label-inline">
-                    Success
-                  </span>
-                </td>
-                <td className="text-right pr-0">
-                  
-                  <a href="#" className="btn btn-icon btn-light btn-sm">
-                    <span className="svg-icon svg-icon-md svg-icon-primary">
-                      <SVG
-                        src={toAbsoluteUrl(
-                          "/media/svg/icons/General/Trash.svg"
-                        )}
-                      ></SVG>
-                    </span>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td className="pl-0 py-4">
-                  <div className="symbol symbol-50 symbol-light">
-                    <span className="symbol-label">
-                      <SVG
-                        className="h-50 align-self-center"
-                        src={toAbsoluteUrl("/media/svg/misc/005-bebo.svg")}
-                      ></SVG>
-                    </span>
-                  </div>
-                </td>
-                <td className="pl-0">
-                  <a
-                    href="#"
-                    className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg"
-                  >
-                    HR Management System
-                  </a>
-                  <div>
-                    <span className="font-weight-bolder">Email:</span>{" "}
-                    <a
-                      className="text-muted font-weight-bold text-hover-primary"
-                      href="#"
-                    >
-                      hr@demo.com
-                    </a>
-                  </div>
-                </td>
-                <td className="text-right">
-                  <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                    $57,000
-                  </span>
-                  <span className="text-muted font-weight-bold">Paid</span>
-                </td>
-                <td className="text-right">
-                  <span className="text-muted font-weight-bold">
-                    AngularJS, C#
-                  </span>
-                </td>
-                <td className="text-right">
-                  <span className="label label-lg label-light-danger label-inline">
-                    Rejected
-                  </span>
-                </td>
-                <td className="text-right pr-0">
-                  
-                  <a href="#" className="btn btn-icon btn-light btn-sm">
-                    <span className="svg-icon svg-icon-md svg-icon-primary">
-                      <SVG
-                        src={toAbsoluteUrl(
-                          "/media/svg/icons/General/Trash.svg"
-                        )}
-                      ></SVG>
-                    </span>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td className="pl-0 py-4">
-                  <div className="symbol symbol-50 symbol-light">
-                    <span className="symbol-label">
-                      <SVG
-                        className="h-50 align-self-center"
-                        src={toAbsoluteUrl(
-                          "/media/svg/misc/014-kickstarter.svg"
-                        )}
-                      ></SVG>
-                    </span>
-                  </div>
-                </td>
-                <td className="pl-0">
-                  <a
-                    href="#"
-                    className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg"
-                  >
-                    KTR Mobile Application
-                  </a>
-                  <div>
-                    <span className="font-weight-bolder">Email:</span>{" "}
-                    <a
-                      className="text-muted font-weight-bold text-hover-primary"
-                      href="#"
-                    >
-                      ktr@demo.com
-                    </a>
-                  </div>
-                </td>
-                <td className="text-right">
-                  <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                    $45,200,000
-                  </span>
-                  <span className="text-muted font-weight-bold">Paid</span>
-                </td>
-                <td className="text-right">
-                  <span className="text-muted font-weight-500">
-                    ReactJS, Ruby
-                  </span>
-                </td>
-                <td className="text-right">
-                  <span className="label label-lg label-light-warning label-inline">
-                    In Progress
-                  </span>
-                </td>
-                <td className="text-right pr-0">
                  
+                  </span>
+ 
+                </td>
+                <td className="text-right">
+                  <span className="text-muted font-weight-500">
+                  
+                  </span>
+                </td>
+                <td className="text-right">
+                  <span className="label label-lg label-light-warning label-inline">
+                    Medium
+                  </span>
+                </td>
+                <td className="text-right pr-0">
+                  
                   <a href="#" className="btn btn-icon btn-light btn-sm">
                     <span className="svg-icon svg-icon-md svg-icon-primary">
                       <SVG
@@ -362,6 +189,7 @@ export function AdvanceTablesWidget2({ className }) {
                   </a>
                 </td>
               </tr>
+              
             </tbody>
           </table>
         </div>
