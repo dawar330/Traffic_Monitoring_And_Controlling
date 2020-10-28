@@ -2,12 +2,15 @@
 import React from "react";
 import SVG from "react-inlinesvg";
 import {toAbsoluteUrl} from "../../../_helpers";
-import { CircularStatic } from "../Forms/Circle";
 import {Button} from "react-bootstrap";
 import AssignDutiesModal from "./AssignDutiesModal";
+import firebase from "../../../../config/fbConfig";
+
+
 
 export function WardenResponsibilityWidget(props) {
-    const [modalShow, setModalShow] = React.useState(false);
+    const [modalShow1, setModalShow1] = React.useState(false);
+
     const {Duties} = props
   return (
       <div className={`card card-custom card-stretch gutter-b`}>
@@ -18,12 +21,12 @@ export function WardenResponsibilityWidget(props) {
             <span className="text-muted mt-3 font-weight-bold font-size-sm">{Duties.length} Wardens are Assigned at the momment</span>
           </h3>
           <div className="card-toolbar">
-          <Button variant="btn btn-danger font-weight-bolder font-size-sm" onClick={() => setModalShow(true)}>
+          <Button variant="btn btn-danger font-weight-bolder font-size-sm" onClick={() => setModalShow1(true)}>
         Assign Duties
       </Button>
       <AssignDutiesModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
+        show={modalShow1}
+        onHide={() => setModalShow1(false)}
       />  </div>
         </div>
         {/* Body */}
@@ -37,7 +40,7 @@ export function WardenResponsibilityWidget(props) {
                   <th style={{minWidth: "100px"}}>Start Time</th>
                   <th style={{minWidth: "100px"}}>End Time</th>
                   <th style={{minWidth: "100px"}}>Assigned Area</th>
-                  <th style={{minWidth: "130px"}}>Current Congestion</th>
+                  <th style={{minWidth: "130px"}}></th>
    
                 </tr>
                 </thead>
@@ -55,41 +58,42 @@ export function WardenResponsibilityWidget(props) {
                             </span>
                         </div>
                         <div>
-                  <a href="#" className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">{Duty.FirstName}</a>
+                  <a href="#" className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">{Duty.FirstName} {Duty.LastName}</a>
                           <span className="text-muted font-weight-bold d-block"></span>
                         </div>
                       </div>
                     </td>
                     <td>
                         <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                          10
+                          {Duty.StartTime.substring(0, 10)}
                         </span>
                       <span className="text-muted font-weight-bold">
-                          00 am
+                      {Duty.StartTime.substring(11, 17)}
                         </span>
                     </td>
                     <td>
                         <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                          05
+                        {Duty.EndTime.substring(0, 10)}
                         </span>
                       <span className="text-muted font-weight-bold">
-                          00 pm
+                      {Duty.EndTime.substring(11, 17)}
                         </span>
                     </td>
                     <td>
                         <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                          F7
+                        {Duty.Area}
                         </span>
                       <span className="text-muted font-weight-bold">
                           
                         </span>
                     </td>
                     <td>
-                    
-                    <CircularStatic/>
-                      <span className="text-muted font-weight-bold d-block font-size-sm">
-                          50%
-                        </span>
+                    <Button variant="btn btn-danger font-weight-bolder font-size-sm" onClick={() => {
+                        const db = firebase.firestore()
+                        db.collection("VardenDuties").doc(Duty.id).delete()
+                    }} >
+          Delete
+        </Button>  
                     </td>
                     
                   </tr>
@@ -105,3 +109,7 @@ export function WardenResponsibilityWidget(props) {
       </div>
   );
 }
+
+export default (WardenResponsibilityWidget)
+
+

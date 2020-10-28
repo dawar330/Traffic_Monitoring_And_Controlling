@@ -9,15 +9,15 @@ function  ProfilePage () {
 
   const [Vardens, setVardens] = React.useState([])
 
- React.useEffect(()=>{
-   const fetchData = async () => {
-   const data = await firebase.firestore().collection("Vardens").get()
-   const x = (data.docs.map(doc => ({...doc.data(),id:doc.id})))
-   setVardens(x)
-    
-   }
-   fetchData()
-  },[])
+  React.useEffect(()=>{
+    const fetchData = async () => {
+    const data = await firebase.firestore().collection("Vardens").get()
+    const x = (data.docs.map(doc => ({...doc.data(),id:doc.id})))
+    setVardens(x)
+     
+    }
+    fetchData()
+   },[])
  
 
 return (<div className="row">

@@ -4,7 +4,7 @@ import SVG from "react-inlinesvg";
 import {toAbsoluteUrl} from "../../../_helpers";
 import {Button} from "react-bootstrap";
 import CreateWardenModal from "./CreateWardenModal";
-
+import firebase from "../../../../config/fbConfig";
 
 
 
@@ -48,6 +48,7 @@ export function AdvanceTablesWidget4(props) {
                   <th style={{minWidth: "100px"}}></th>
                   <th style={{minWidth: "100px"}}>Age</th>
                   <th style={{minWidth: "130px"}}>rating</th>
+                  <th style={{minWidth: "130px"}}></th>
    
                 </tr>
                 </thead>
@@ -101,6 +102,16 @@ export function AdvanceTablesWidget4(props) {
                         Best Rated
                       </span>
                   </td>
+                  <td>
+                    <Button variant="btn btn-danger font-weight-bolder font-size-sm" onClick={() => {
+                        const db = firebase.firestore()
+                       db.collection("Vardens").doc(Varden.id).delete()
+                      
+                     
+                    }} >
+          Delete
+        </Button>  
+                    </td>
                   
                 </tr>
               );

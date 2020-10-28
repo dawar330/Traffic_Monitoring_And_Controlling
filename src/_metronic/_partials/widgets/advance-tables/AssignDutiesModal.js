@@ -62,12 +62,19 @@ Add Warden
 <ErrorMessage name="EndTime"/><br/>
 <Field name="Area" as={TextField} select label="Area">
 
-<MenuItem value={0}>F 10</MenuItem>
-<MenuItem value={1}>F 9</MenuItem>
-<MenuItem value={2}>F 8</MenuItem>
-<MenuItem value={3}>F 7</MenuItem>
-<MenuItem value={4}>F 6</MenuItem>
-<MenuItem value={5}>G 10</MenuItem>
+<MenuItem value={'F 11'}>F 11</MenuItem>
+<MenuItem value={'F 10'}>F 10</MenuItem>
+<MenuItem value={'F 9'}>F 9</MenuItem>
+<MenuItem value={'F 8'}>F 8</MenuItem>
+<MenuItem value={'F 7'}>F 7</MenuItem>
+<MenuItem value={'F 6'}>F 6</MenuItem>
+<MenuItem value={'G 10'}>G 11</MenuItem>
+<MenuItem value={'G 10'}>G 10</MenuItem>
+<MenuItem value={'G 10'}>G 9</MenuItem>
+<MenuItem value={'G 10'}>G 8</MenuItem>
+<MenuItem value={'G 10'}>G 7</MenuItem>
+<MenuItem value={'G 10'}>G 6</MenuItem>
+<MenuItem value={'E 11'}>E 11</MenuItem>
 </Field><br/>
 <ErrorMessage name="Area"/><br/>
 <Button onClick={propss.onHide}>Close</Button>
