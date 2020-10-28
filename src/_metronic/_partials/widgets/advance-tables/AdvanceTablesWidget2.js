@@ -3,12 +3,16 @@ import React, {useState} from "react";
 import { Nav, Tab } from "react-bootstrap";
 import SVG from "react-inlinesvg";
 import {toAbsoluteUrl} from "../../../_helpers";
+import firebase from "../../../../config/fbConfig";
 
-export function AdvanceTablesWidget2({ className }) {
+export function AdvanceTablesWidget2(props) {
   const [key, setKey] = useState("Month");
+  const {Suggestions} = props
+  console.log(Suggestions)
+ 
 
   return (
-    <div className={`card card-custom ${className}`}>
+    <div className={`card card-custom card-stretch gutter-b`}>
       {/* Head */}
       <div className="card-header border-0 pt-5">
         <h3 className="card-title align-items-start flex-column">
@@ -16,7 +20,7 @@ export function AdvanceTablesWidget2({ className }) {
             Suggestions
           </span>
           <span className="text-muted mt-3 font-weight-bold font-size-sm">
-            More than 400+ new Suggestions
+            More than + new Suggestions
           </span>
         </h3>
         <div className="card-toolbar">
@@ -75,120 +79,72 @@ export function AdvanceTablesWidget2({ className }) {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="pl-0 py-4">
-                  <div className="symbol symbol-50 symbol-light mr-1">
-                    <span className="symbol-label">
-                      <SVG
-                        src={toAbsoluteUrl("/media/svg/misc/006-plurk.svg")}
-                        className="h-50 align-self-center"
-                      ></SVG>
-                    </span>
-                  </div>
-                </td>
-                <td className="pl-0">
-                  <a
-                    href="#"
-                    className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg"
-                  >
-                    Lane Id 32312 is increase delay in traffic increase signal timer by 3s.
-                  </a>
-                  <div>
-                    <span className="font-weight-bolder"></span>{" "}
-                    <a
-                      className="text-muted font-weight-bold text-hover-primary"
-                      href="#"
-                    >
-                     
-                    </a>
-                  </div>
-                </td>
-                <td className="text-right">
-                  <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                   
-                  </span>
+            {Suggestions && Suggestions.map(Suggestion => {
 
-                </td>
-                <td className="text-right">
-                  <span className="text-muted font-weight-500">
-                   
-                  </span>
-                </td>
-                <td className="text-right">
-                  <span className="label label-lg label-light-primary label-inline">
-                    Low
-                  </span>
-                </td>
-                <td className="text-right pr-0">
-               
-                  <a href="#" className="btn btn-icon btn-light btn-sm">
-                    <span className="svg-icon svg-icon-md svg-icon-primary">
-                      <SVG
-                        src={toAbsoluteUrl(
-                          "/media/svg/icons/General/Trash.svg"
-                        )}
-                      ></SVG>
-                    </span>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td className="pl-0 py-4">
-                  <div className="symbol symbol-50 symbol-light">
-                    <span className="symbol-label">
-                      <SVG
-                        className="h-50 align-self-center"
-                        src={toAbsoluteUrl("/media/svg/misc/015-telegram.svg")}
-                      ></SVG>
-                    </span>
-                  </div>
-                </td>
-                <td className="pl-0">
-                  <a
-                    href="#"
-                    className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg"
-                  >
-                    Increase no of lanes of Edge id 34321.
-                  </a>
-                  <div>
-                   
-                    <a
-                      className="text-muted font-weight-bold text-hover-primary"
-                      href="#"
-                    >
-                      
-                    </a>
-                  </div>
-                </td>
-                <td className="text-right">
-                  <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                 
-                  </span>
- 
-                </td>
-                <td className="text-right">
-                  <span className="text-muted font-weight-500">
-                  
-                  </span>
-                </td>
-                <td className="text-right">
-                  <span className="label label-lg label-light-warning label-inline">
-                    Medium
-                  </span>
-                </td>
-                <td className="text-right pr-0">
-                  
-                  <a href="#" className="btn btn-icon btn-light btn-sm">
-                    <span className="svg-icon svg-icon-md svg-icon-primary">
-                      <SVG
-                        src={toAbsoluteUrl(
-                          "/media/svg/icons/General/Trash.svg"
-                        )}
-                      ></SVG>
-                    </span>
-                  </a>
-                </td>
-              </tr>
+return (
+  <tr key = {Suggestion.id}>
+  <td className="pl-0 py-4">
+    <div className="symbol symbol-50 symbol-light">
+      <span className="symbol-label">
+        <SVG
+          className="h-50 align-self-center"
+          src={toAbsoluteUrl("/media/svg/misc/015-telegram.svg")}
+        ></SVG>
+      </span>
+    </div>
+  </td>
+  <td className="pl-0">
+    <a
+      href="#"
+      className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg"
+    >
+      {Suggestion.Description}
+    </a>
+    <div>
+     
+      <a
+        className="text-muted font-weight-bold text-hover-primary"
+        href="#"
+      >
+        
+      </a>
+    </div>
+  </td>
+  <td className="text-right">
+    <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
+   
+    </span>
+
+  </td>
+  <td className="text-right">
+    <span className="text-muted font-weight-500">
+    
+    </span>
+  </td>
+  <td className="text-right">
+    <span className="label label-lg label-light-warning label-inline">
+      Medium
+    </span>
+  </td>
+  <td className="text-right pr-0">
+    
+    <a href="#" className="btn btn-icon btn-light btn-sm" onClick={()=>{
+      const db = firebase.firestore()
+      db.collection("Suggestions").doc(Suggestion.id).delete()
+    }}>
+      <span className="svg-icon svg-icon-md svg-icon-primary">
+        <SVG
+          src={toAbsoluteUrl(
+            "/media/svg/icons/General/Trash.svg"
+          )}
+        ></SVG>
+      </span>
+    </a>
+  </td>
+</tr>
+);
+})}
+              
               
             </tbody>
           </table>
