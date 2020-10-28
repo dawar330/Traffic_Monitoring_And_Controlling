@@ -5,7 +5,7 @@ import {DashboardPage} from "./pages/DashboardPage";
 import {SugestionsPage} from "./pages/SugestionsPage";
 import {ReportingPage} from "./pages/ReportingPage";
 import ProfilePage from "./pages/ProfilePage";
-import {WardenResponsibilitiesPage} from "./pages/WardenResponsibilitiesPage";
+import WardenResponsibilitiesPage from "./pages/WardenResponsibilitiesPage";
 
 export default function BasePage() {
 

@@ -1,74 +1,101 @@
-import React from "react";
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import React, { Component } from "react";
 import {Modal , Button, InputGroup, FormControl} from "react-bootstrap";
-const useStyles = makeStyles(theme => ({
-    container: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
-    textField: {
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
-      width: 200,
-    },
-  }));
-export function AssignDutiesModal(props) {
-    const classes = useStyles();
-    return (
-      <Modal
-        {...props}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Add Warden
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
+import { connect } from "react-redux";
+import  {createDuty}  from "../../../../redux/actions/DutiesActions"
+import * as Yup from 'yup'
+import {Form, Formik, Field, ErrorMessage} from 'formik'
+import {MenuItem, TextField} from "@material-ui/core"
+import { object } from "yup";
 
-          
-            <InputGroup className="mb-3">
-            <InputGroup.Prepend>
-                <InputGroup.Text>First and last name</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl />
-            <FormControl />
-            </InputGroup>
-            <br />
-            <form className={classes.container} noValidate>
-            <TextField
-                id="datetime-local"
-                label="Start Time"
-                type="datetime-local"
-                defaultValue="2017-05-24T10:30"
-                className={classes.textField}
-                InputLabelProps={{
-                shrink: true,
-                }}
-            />
-            </form>
-            <br />
-            <form className={classes.container} noValidate>
-            <TextField
-                id="datetime-local"
-                label="End Time"
-                type="datetime-local"
-                defaultValue="2017-05-24T10:30"
-                className={classes.textField}
-                InputLabelProps={{
-                shrink: true,
-                }}
-            />
-            </form>
+ export function AssignDutiesModal(propss){
+  
 
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
-          <Button>Assign</Button>
-        </Modal.Footer>
-      </Modal>
-    );
-  }
+        return(
+          <Formik
+          initialValues={{FirstName: '',LastName: '', StartTime: '', EndTime: '',Area: ''}}
+          onSubmit={(values, formikHelpers)=>{
+            console.log(values)
+            propss.createDuty(values);
+            propss.onHide()
+          }}
+          validationSchema={
+            object({
+              FirstName: Yup.string()
+              
+              .required("First Name is Required"),
+              LastName: Yup.string()
+              
+              .required("Last Name is Required"),
+              StartTime: Yup.date()
+              
+              .required("Start Time is Required"),
+              EndTime: Yup.date()
+              
+              .required("End Time is Required"),
+              Area: Yup.string()
+              
+              .required("Area is Required")
+            })
+          }
+          > 
+          {({values, errors, touched})=>(
+ <Modal show={propss.show} onHide={propss.onHide}>
+            
+ <Modal.Header closeButton>
+<Modal.Title id="contained-modal-title-vcenter">
+Add Warden
+</Modal.Title>
+</Modal.Header>
+<Modal.Body>
+
+<Form >
+<div classname="form-group">
+
+
+<Field name="FirstName" as={TextField} label="First Name"/><br/>
+<ErrorMessage name="FirstName"/><br/>
+<Field name="LastName" as={TextField} label="Last Name"/><br/>
+<ErrorMessage name="LastName"/><br/>
+<Field name="StartTime" type="datetime-local" as={TextField} label="Start Time"/><br/>
+<ErrorMessage name="StartTime"/><br/>
+<Field name="EndTime" type="datetime-local" as={TextField} label="End Time"/><br/>
+<ErrorMessage name="EndTime"/><br/>
+<Field name="Area" as={TextField} select label="Area">
+
+<MenuItem value={0}>F 10</MenuItem>
+<MenuItem value={1}>F 9</MenuItem>
+<MenuItem value={2}>F 8</MenuItem>
+<MenuItem value={3}>F 7</MenuItem>
+<MenuItem value={4}>F 6</MenuItem>
+<MenuItem value={5}>G 10</MenuItem>
+</Field><br/>
+<ErrorMessage name="Area"/><br/>
+<Button onClick={propss.onHide}>Close</Button>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<Button type='submit' >ADD</Button>
+
+</div>
+
+</Form>
+
+
+</Modal.Body>
+
+</Modal>
+          )}
+    
+         
+        </Formik>
+        );
+        
+      }
+    
+    
+ 
+      const mapdispatchtoprops =(dispatch) => {
+        return {
+          createDuty: (Duty) => dispatch(createDuty(Duty))
+        }
+      }
+      export default connect(null, mapdispatchtoprops)(AssignDutiesModal)
+  

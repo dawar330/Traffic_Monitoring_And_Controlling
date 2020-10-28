@@ -1,10 +1,6 @@
 
 const initState = {
-    Vardens : [
-        {id: 1 , Name : "dawar", Rank : 17 , Designation: "Traffic Officer", Age : 30 },
-        {id: 1 , Name : "Ali", Rank : 17 , Designation: "Traffic Officer", Age : 30 },
-        {id: 1 , Name : "Bilal", Rank : 17 , Designation: "Traffic Officer", Age : 30 }
-    ]
+    Vardens : []  
 }
   const wardenreducer = (state = initState, action) => {
     switch (action.type) {

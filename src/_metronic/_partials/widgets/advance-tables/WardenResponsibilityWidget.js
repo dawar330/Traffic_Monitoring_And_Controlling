@@ -4,17 +4,18 @@ import SVG from "react-inlinesvg";
 import {toAbsoluteUrl} from "../../../_helpers";
 import { CircularStatic } from "../Forms/Circle";
 import {Button} from "react-bootstrap";
-import {AssignDutiesModal} from "./AssignDutiesModal";
+import AssignDutiesModal from "./AssignDutiesModal";
 
-export function WardenResponsibilityWidget({ className }) {
+export function WardenResponsibilityWidget(props) {
     const [modalShow, setModalShow] = React.useState(false);
+    const {Duties} = props
   return (
-      <div className={`card card-custom ${className}`}>
+      <div className={`card card-custom card-stretch gutter-b`}>
         {/* Head */}
         <div className="card-header border-0 py-5">
           <h3 className="card-title align-items-start flex-column">
             <span className="card-label font-weight-bolder text-dark">Warden Responsibilities</span>
-            <span className="text-muted mt-3 font-weight-bold font-size-sm">22 Wardens are available</span>
+            <span className="text-muted mt-3 font-weight-bold font-size-sm">{Duties.length} Wardens are Assigned at the momment</span>
           </h3>
           <div className="card-toolbar">
           <Button variant="btn btn-danger font-weight-bolder font-size-sm" onClick={() => setModalShow(true)}>
@@ -41,200 +42,61 @@ export function WardenResponsibilityWidget({ className }) {
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td className="pl-0 py-8">
-                    <div className="d-flex align-items-center">
-                      <div className="symbol symbol-50 symbol-light mr-4">
-                          <span className="symbol-label">
-                            <span className="svg-icon h-75 align-self-end">
-                              <SVG src={toAbsoluteUrl("/media/svg/avatars/001-boy.svg")}/>
+                {Duties && Duties.map(Duty => {
+                  return(
+                    <tr key={Duty.id}>
+                    <td className="pl-0 py-8">
+                      <div className="d-flex align-items-center">
+                        <div className="symbol symbol-50 symbol-light mr-4">
+                            <span className="symbol-label">
+                              <span className="svg-icon h-75 align-self-end">
+                                <SVG src={toAbsoluteUrl("/media/svg/avatars/001-boy.svg")}/>
+                              </span>
                             </span>
-                          </span>
+                        </div>
+                        <div>
+                  <a href="#" className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">{Duty.FirstName}</a>
+                          <span className="text-muted font-weight-bold d-block"></span>
+                        </div>
                       </div>
-                      <div>
-                        <a href="#" className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">Wajahat Malik</a>
-                        <span className="text-muted font-weight-bold d-block"></span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                      <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                        10
-                      </span>
-                    <span className="text-muted font-weight-bold">
-                        00 am
-                      </span>
-                  </td>
-                  <td>
-                      <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                        05
-                      </span>
-                    <span className="text-muted font-weight-bold">
-                        00 pm
-                      </span>
-                  </td>
-                  <td>
-                      <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                        F7
-                      </span>
-                    <span className="text-muted font-weight-bold">
-                        
-                      </span>
-                  </td>
-                  <td>
-                  
-                  <CircularStatic/>
-                    <span className="text-muted font-weight-bold d-block font-size-sm">
-                        50%
-                      </span>
-                  </td>
-                  
-                </tr>
-                <tr>
-                  <td className="pl-0 py-0">
-                    <div className="d-flex align-items-center">
-                      <div className="symbol symbol-50 symbol-light mr-4">
-                        <span className="symbol-label">
-                          <span className="svg-icon h-75 align-self-end">
-                            <SVG src={toAbsoluteUrl("/media/svg/avatars/018-girl-9.svg")}/>
-                          </span>
+                    </td>
+                    <td>
+                        <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
+                          10
                         </span>
-                      </div>
-                      <div>
-                        <a href="#" className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">Subiyal Malik</a>
-                        <span className="text-muted font-weight-bold d-block"></span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                      05
-                    </span>
-                    <span className="text-muted font-weight-bold">
-                      00 pm
-                    </span>
-                  </td>
-                  <td>
-                    <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                      11
-                    </span>
-                    <span className="text-muted font-weight-bold">
-                      00 pm
-                    </span>
-                  </td>
-                  <td>
-                    <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                      G5
-                    </span>
-                    <span className="text-muted font-weight-bold">
-                     
-                    </span>
-                  </td>
-                  <td>
-                   <CircularStatic/> <span className="text-muted font-weight-bold d-block font-size-sm">
-                   50%
-                    </span>
-                  </td>
-                  
-                </tr>
-                <tr>
-                  <td className="pl-0 py-8">
-                    <div className="d-flex align-items-center">
-                      <div className="symbol symbol-50 symbol-light mr-4">
-                        <span className="symbol-label">
-                          <span className="svg-icon h-75 align-self-end">
-                            <SVG src={toAbsoluteUrl("/media/svg/avatars/047-girl-25.svg")}/>
-                          </span>
+                      <span className="text-muted font-weight-bold">
+                          00 am
                         </span>
-                      </div>
-                      <div>
-                        <a href="#" className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">
-                          Ruman Baloch
-                        </a>
-                        <span className="text-muted font-weight-bold d-block"></span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                      01
-                    </span>
-                    <span className="text-muted font-weight-bold">
-                     00 pm
-                    </span>
-                  </td>
-                  <td>
-                    <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                     07
-                    </span>
-                    <span className="text-muted font-weight-bold">
-                      00 am
-                    </span>
-                  </td>
-                  <td>
-                    <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                      G9
-                    </span>
-                    <span className="text-muted font-weight-bold">
-                      
-                    </span>
-                  </td>
-                  <td>
-                   <CircularStatic/> <span className="text-muted font-weight-bold d-block font-size-sm">
-                   50%
-                    </span>
-                  </td>
-                 
-                </tr>
-                <tr>
-                  <td className="pl-0 py-0 ">
-                    <div className="d-flex align-items-center">
-                      <div className="symbol symbol-50 symbol-light mr-4">
-                        <span className="symbol-label">
-                          <span className="svg-icon h-75 align-self-end">
-                            <SVG src={toAbsoluteUrl("/media/svg/avatars/014-girl-7.svg")}/>
-                          </span>
+                    </td>
+                    <td>
+                        <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
+                          05
                         </span>
-                      </div>
-                      <div>
-                        <a href="#" className="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">
-                          Mustafa Dar
-                        </a>
-                        <span className="text-muted font-weight-bold d-block"></span>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="text-left pr-0">
-                    <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                      04
-                    </span>
-                    <span className="text-muted font-weight-bold">
-                      00 pm
-                    </span>
-                  </td>
-                  <td>
-                    <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                      12
-                    </span>
-                    <span className="text-muted font-weight-bold">
-                      00 am
-                    </span>
-                  </td>
-                  <td>
-                    <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
-                      F10
-                    </span>
-                    <span className="text-muted font-weight-bold">
+                      <span className="text-muted font-weight-bold">
+                          00 pm
+                        </span>
+                    </td>
+                    <td>
+                        <span className="text-dark-75 font-weight-bolder d-block font-size-lg">
+                          F7
+                        </span>
+                      <span className="text-muted font-weight-bold">
+                          
+                        </span>
+                    </td>
+                    <td>
                     
-                    </span>
-                  </td>
-                  <td>
-                   <CircularStatic/> <span className="text-muted font-weight-bold d-block font-size-sm">
-                   50%
-                    </span>
-                  </td>
-             
-                </tr>
+                    <CircularStatic/>
+                      <span className="text-muted font-weight-bold d-block font-size-sm">
+                          50%
+                        </span>
+                    </td>
+                    
+                  </tr>
+                               );
+                              })}
+
+                
                 </tbody>
               </table>
             </div>

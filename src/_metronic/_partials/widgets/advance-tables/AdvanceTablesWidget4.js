@@ -17,11 +17,12 @@ export function AdvanceTablesWidget4(props) {
 
   return (
    
-      <div className={`card card-custom card-stretch gutter-b}`}>
+      <div className={`card card-custom card-stretch gutter-b`}>
         {/* Head */}
         <div className="card-header border-0 py-5">
           <h3 className="card-title align-items-start flex-column">
             <span className="card-label font-weight-bolder text-dark"> Warden </span>
+            <span className="text-muted mt-3 font-weight-bold font-size-sm">{Vardens.length} Vardens are Registered</span>
           </h3>
           <div className="card-toolbar">
           <Button variant="btn btn-danger font-weight-bolder font-size-sm" onClick={() => setModalShow(true)}>
@@ -52,8 +53,9 @@ export function AdvanceTablesWidget4(props) {
                 </thead>
                 <tbody>
                 {Vardens && Vardens.map(Varden => {
+
               return (
-                <tr>
+                <tr key={Varden.id} >
                   <td className="pl-0 py-8">
                     <div className="d-flex align-items-center">
                       <div className="symbol symbol-50 symbol-light mr-4">
@@ -64,7 +66,7 @@ export function AdvanceTablesWidget4(props) {
                           </span>
                       </div>
                       <div>
-                        <a href="#" className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">{Varden.Name}</a>
+                        <a href="#" className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">{Varden.FirstName} {Varden.LastName}</a>
                         <span className="text-muted font-weight-bold d-block"></span>
                       </div>
                     </div>

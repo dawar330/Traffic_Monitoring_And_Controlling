@@ -1,95 +1,93 @@
-import React from "react";
+import React, { Component } from "react";
 import {Modal , Button, InputGroup, FormControl} from "react-bootstrap";
 import { connect } from "react-redux";
 import  {createvarden}  from "../../../../redux/actions/VardenActions"
+import * as Yup from 'yup'
+import {Form, Formik, Field, ErrorMessage} from 'formik'
+import {TextField} from "@material-ui/core"
+import { object } from "yup";
+
+ export function CreateWardenModal(propss){
+  
+
+        return(
+          <Formik
+          initialValues={{FirstName: '',LastName: '', Age: '', Rank: '',Designation: ''}}
+          onSubmit={(values, formikHelpers)=>{
+            console.log(values)
+            propss.createvarden(values);
+            propss.onHide()
+          }}
+          validationSchema={
+            object({
+              FirstName: Yup.string()
+              
+              .required("First Name is Required"),
+              LastName: Yup.string()
+              
+              .required("Last Name is Required"),
+              Age: Yup.string()
+              
+              .required("Age is Required"),
+              Rank: Yup.string()
+              
+              .required("Rank is Required"),
+              Designation: Yup.string()
+              
+              .required("Designation is Required")
+            })
+          }
+          > 
+          {({values, errors, touched})=>(
+ <Modal show={propss.show} onHide={propss.onHide}>
+            
+ <Modal.Header closeButton>
+<Modal.Title id="contained-modal-title-vcenter">
+Add Warden
+</Modal.Title>
+</Modal.Header>
+<Modal.Body>
+
+<Form >
+<div classname="form-group">
 
 
-export function CreateWardenModal(props) {
-  const handlechange = (e) =>{
-    this.setState({
-      [e.target.id]: e.target.value
-    })
-  }
-  const handlesubmit = (e) =>{
-   e.preventDefault();
-   props.createvarden(state);
-   console.log(state)
-   
-  }
-   const state = {
-   Name: 'hi',
-   Rank:'',
-   Designation: '',
-   Age: ''
+<Field name="FirstName" as={TextField} label="First Name"/><br/>
+<ErrorMessage name="FirstName"/><br/>
+<Field name="LastName" as={TextField} label="Last Name"/><br/>
+<ErrorMessage name="LastName"/><br/>
+<Field name="Age" type="number" as={TextField} label="Age"/><br/>
+<ErrorMessage name="Age"/><br/>
+<Field name="Rank" type="number" as={TextField} label="Rank"/><br/>
+<ErrorMessage name="Rank"/><br/>
+<Field name="Designation" as={TextField} label="Designation"/><br/>
+<ErrorMessage name="Designation"/><br/>
+<Button onClick={propss.onHide}>Close</Button>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<Button type='submit' >ADD</Button>
 
- }
+</div>
+
+</Form>
+
+
+</Modal.Body>
+
+</Modal>
+          )}
+    
+         
+        </Formik>
+        );
+        
+      }
+    
+    
  
-
-    return (
-      <Modal
-        {...props}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Add Warden
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-
-          
-            <InputGroup className="mb-3">
-            <InputGroup.Prepend>
-                <InputGroup.Text  onChange={handlechange} id="Name">First and last name</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl />
-            <FormControl />
-            </InputGroup>
-                        <br />
-            <InputGroup className="mb-3">
-                <InputGroup.Prepend>
-                <InputGroup.Text  onChange={handlechange} id="Rank">Rank</InputGroup.Text>
-                </InputGroup.Prepend>
-                <FormControl
-                aria-label="Default"
-                aria-describedby="inputGroup-sizing-default"
-                />
-            </InputGroup>
-            <br />
-            <InputGroup className="mb-3">
-                <InputGroup.Prepend>
-                <InputGroup.Text onChange={handlechange} id="Designation">Designation</InputGroup.Text>
-                </InputGroup.Prepend>
-                <FormControl
-                aria-label="Default"
-                aria-describedby="inputGroup-sizing-default"
-                />
-            </InputGroup>
-            <br />
-            <InputGroup className="mb-3">
-                <InputGroup.Prepend>
-                <InputGroup.Text onChange={handlechange} id="Age">Age</InputGroup.Text>
-                </InputGroup.Prepend>
-                <FormControl
-                aria-label="Default"
-                aria-describedby="inputGroup-sizing-default"
-                />
-            </InputGroup>
-            <br/>
-
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
-          <Button onClick={handlesubmit}>ADD</Button>
-        </Modal.Footer>
-      </Modal>
-    );
-  }
-  const mapdispatchtoprops =(dispatch) => {
-    return {
-      createvarden: (Varden) => dispatch(createvarden(Varden))
-    }
-  }
-  export default connect(null, mapdispatchtoprops)(CreateWardenModal)
+      const mapdispatchtoprops =(dispatch) => {
+        return {
+          createvarden: (Varden) => dispatch(createvarden(Varden))
+        }
+      }
+      export default connect(null, mapdispatchtoprops)(CreateWardenModal)
+  
