@@ -22,7 +22,7 @@ export function Routes() {
 
     return (
         <Switch>
-            {isAuthorized ? (
+            {!isAuthorized ? (
                 /*Render auth page when user at `/auth` and not authorized.*/
                 
                     <AuthPage />
@@ -36,7 +36,7 @@ export function Routes() {
             <Route path="/logout" component={Logout}/>
 
 
-            {isAuthorized ? (
+            {!isAuthorized ? (
                 /*Redirect to `/auth` when user is not authorized*/
                 <Redirect to="/auth/login"/>
             ) : (
