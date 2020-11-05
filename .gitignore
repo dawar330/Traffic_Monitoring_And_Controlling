@@ -12,9 +12,6 @@
 # redactor
 /.idea
 
-# assets
-/public/media
-
 
 
 # production
